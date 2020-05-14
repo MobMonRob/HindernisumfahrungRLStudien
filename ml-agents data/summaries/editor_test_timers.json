@@ -1,0 +1,125 @@
+{
+  "name": "root",
+  "gauges": [
+    {
+      "name": "SpiderBrain.mean_reward",
+      "value": 0.20812761407307903,
+      "min": 0.10714014474865344,
+      "max": 0.20812761407307903,
+      "count": 3
+    }
+  ],
+  "total": 129.223492,
+  "count": 1,
+  "self": 10.278540099999844,
+  "children": [
+    {
+      "name": "TrainerController.advance",
+      "total": 118.94495190000015,
+      "count": 1242,
+      "self": 0.022806600000293997,
+      "children": [
+        {
+          "name": "env_step",
+          "total": 113.81573210000005,
+          "count": 1242,
+          "self": 112.6706041000006,
+          "children": [
+            {
+              "name": "SubprocessEnvManager._take_step",
+              "total": 1.128021599999654,
+              "count": 1242,
+              "self": 1.128021599999654
+            },
+            {
+              "name": "workers",
+              "total": 0.017106399999788025,
+              "count": 1241,
+              "self": 0.0,
+              "children": [
+                {
+                  "name": "worker_root",
+                  "total": 127.55447279999997,
+                  "count": 1241,
+                  "is_parallel": true,
+                  "self": 16.46063479999998,
+                  "children": [
+                    {
+                      "name": "batched_step_result_from_proto",
+                      "total": 0.0008268000000004605,
+                      "count": 1,
+                      "is_parallel": true,
+                      "self": 0.0001073000000006985,
+                      "children": [
+                        {
+                          "name": "_process_vector_observation",
+                          "total": 0.000719499999999762,
+                          "count": 1,
+                          "is_parallel": true,
+                          "self": 0.000719499999999762
+                        }
+                      ]
+                    },
+                    {
+                      "name": "UnityEnvironment.step",
+                      "total": 111.09301119999999,
+                      "count": 1241,
+                      "is_parallel": true,
+                      "self": 0.23987269999993543,
+                      "children": [
+                        {
+                          "name": "UnityEnvironment._generate_step_input",
+                          "total": 0.34021170000003664,
+                          "count": 1241,
+                          "is_parallel": true,
+                          "self": 0.34021170000003664
+                        },
+                        {
+                          "name": "communicator.exchange",
+                          "total": 109.76653399999984,
+                          "count": 1241,
+                          "is_parallel": true,
+                          "self": 109.76653399999984
+                        },
+                        {
+                          "name": "batched_step_result_from_proto",
+                          "total": 0.7463928000001783,
+                          "count": 1241,
+                          "is_parallel": true,
+                          "self": 0.10840040000023876,
+                          "children": [
+                            {
+                              "name": "_process_vector_observation",
+                              "total": 0.6379923999999395,
+                              "count": 1241,
+                              "is_parallel": true,
+                              "self": 0.6379923999999395
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "trainer_advance",
+          "total": 5.106413199999803,
+          "count": 1241,
+          "self": 0.08501329999966067,
+          "children": [
+            {
+              "name": "process_trajectory",
+              "total": 5.021399900000143,
+              "count": 1241,
+              "self": 5.021399900000143
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

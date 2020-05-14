@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="701aff50-4b5c-414e-93c2-704791756584" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/SpiderManualControler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/cameraFoller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ComPortMirror.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ServoMotor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Benutzer/DarkP/Dokumente/DHBW/Studienarbeit/ml-agents/com.unity.ml-agents/Runtime/Sensors/VectorSensor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PhysicsDelayScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Benutzer/DarkP/Dokumente/DHBW/Studienarbeit/ml-agents-latest_release/com.unity.ml-agents/Runtime/Sensor/VectorSensor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ProgressTracker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2EFDC780-086B-47F2-8399-FD0CE7A4BFA4/2d/818d8a16/Input.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://D:/Benutzer/DarkP/Dokumente/DHBW/Studienarbeit/ml-agents/com.unity.ml-agents/Runtime/Agent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SpiderController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SpiderAgent.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/PhysicsDelayScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/ProgressTracker.cs" />
+        <option value="$PROJECT_DIR$/Assets/SpiderController.cs" />
+        <option value="$PROJECT_DIR$/Assets/SpiderManualControler.cs" />
+        <option value="$PROJECT_DIR$/Assets/ServoMotor.cs" />
+        <option value="$PROJECT_DIR$/Assets/cameraFoller.cs" />
+        <option value="$PROJECT_DIR$/Assets/TimeScaleManipulation.cs" />
+        <option value="$PROJECT_DIR$/Assets/SpiderAgent.cs" />
+        <option value="$PROJECT_DIR$/Assets/ComPortMirror.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YfhKZmWYLjRi0ZyAwuitfc4cP8" />
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="1972">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="1972" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="701aff50-4b5c-414e-93c2-704791756584" name="Default Changelist" comment="" />
+      <created>1583339494156</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583339494156</updated>
+      <workItem from="1583339498798" duration="445000" />
+      <workItem from="1584097172539" duration="3825000" />
+      <workItem from="1584350239579" duration="5711000" />
+      <workItem from="1585572786722" duration="2766000" />
+      <workItem from="1587748819705" duration="1476000" />
+      <workItem from="1587805841352" duration="2147000" />
+      <workItem from="1587812421398" duration="2290000" />
+      <workItem from="1587818887712" duration="934000" />
+      <workItem from="1587998330567" duration="752000" />
+      <workItem from="1588168612236" duration="2717000" />
+      <workItem from="1588180916916" duration="625000" />
+      <workItem from="1588253635237" duration="286000" />
+      <workItem from="1588358219174" duration="993000" />
+      <workItem from="1588416050802" duration="237000" />
+      <workItem from="1588874585330" duration="7098000" />
+      <workItem from="1588930743037" duration="2495000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

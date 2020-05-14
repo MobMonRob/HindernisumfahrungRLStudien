@@ -1,0 +1,2 @@
+Steps,Policy/Entropy,Policy/Learning Rate,Environment/Cumulative Reward,Environment/Episode Length,Policy/Extrinsic Value Estimate,Policy/Extrinsic Reward,Losses/Value Loss,Losses/Policy Loss,Losses/Q1 Loss,Losses/Q2 Loss,Policy/Entropy Coeff
+3660000,9.680114,0.0008071402,11334.615301621361,118.65384615384616,823.49896,11334.61525603441,6998.8047,-798.4705,2781.878,2923.3977,0.21597244

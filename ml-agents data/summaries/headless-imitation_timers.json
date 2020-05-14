@@ -1,0 +1,191 @@
+{
+  "name": "root",
+  "gauges": [
+    {
+      "name": "SpiderBrain.mean_reward",
+      "value": 0.309915815961772,
+      "min": 0.1702187391264098,
+      "max": 0.33760225607289207,
+      "count": 26
+    }
+  ],
+  "total": 413.1702775,
+  "count": 1,
+  "self": 42.01468040000077,
+  "children": [
+    {
+      "name": "demo_to_buffer",
+      "total": 0.1269732999999995,
+      "count": 1,
+      "self": 0.0004508999999988106,
+      "children": [
+        {
+          "name": "load_demonstration",
+          "total": 0.0031175999999994986,
+          "count": 1,
+          "self": 0.0030242000000004765,
+          "children": [
+            {
+              "name": "read_file",
+              "total": 9.339999999902204e-05,
+              "count": 1,
+              "self": 9.339999999902204e-05
+            }
+          ]
+        },
+        {
+          "name": "make_demo_buffer",
+          "total": 0.1234048000000012,
+          "count": 1,
+          "self": 0.0477058000000099,
+          "children": [
+            {
+              "name": "batched_step_result_from_proto",
+              "total": 0.0756989999999913,
+              "count": 1216,
+              "self": 0.02917090000001643,
+              "children": [
+                {
+                  "name": "_process_vector_observation",
+                  "total": 0.04652809999997487,
+                  "count": 1216,
+                  "self": 0.04652809999997487
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TrainerController.advance",
+      "total": 371.02862379999925,
+      "count": 5714,
+      "self": 0.12509169999731284,
+      "children": [
+        {
+          "name": "env_step",
+          "total": 92.58903500000116,
+          "count": 5714,
+          "self": 85.31524140000192,
+          "children": [
+            {
+              "name": "SubprocessEnvManager._take_step",
+              "total": 7.168955499999591,
+              "count": 7944,
+              "self": 7.168955499999591
+            },
+            {
+              "name": "workers",
+              "total": 0.10483809999964855,
+              "count": 5714,
+              "self": 0.0,
+              "children": [
+                {
+                  "name": "worker_root",
+                  "total": 1228.1001415999974,
+                  "count": 7943,
+                  "is_parallel": true,
+                  "self": 872.0657546999979,
+                  "children": [
+                    {
+                      "name": "batched_step_result_from_proto",
+                      "total": 0.0019431000000000864,
+                      "count": 3,
+                      "is_parallel": true,
+                      "self": 0.0003986000000000267,
+                      "children": [
+                        {
+                          "name": "_process_vector_observation",
+                          "total": 0.0015445000000000597,
+                          "count": 3,
+                          "is_parallel": true,
+                          "self": 0.0015445000000000597
+                        }
+                      ]
+                    },
+                    {
+                      "name": "UnityEnvironment.step",
+                      "total": 356.0324437999995,
+                      "count": 7943,
+                      "is_parallel": true,
+                      "self": 1.5227255000028777,
+                      "children": [
+                        {
+                          "name": "UnityEnvironment._generate_step_input",
+                          "total": 2.9323787999983573,
+                          "count": 7943,
+                          "is_parallel": true,
+                          "self": 2.9323787999983573
+                        },
+                        {
+                          "name": "communicator.exchange",
+                          "total": 347.61223180000064,
+                          "count": 7943,
+                          "is_parallel": true,
+                          "self": 347.61223180000064
+                        },
+                        {
+                          "name": "batched_step_result_from_proto",
+                          "total": 3.9651076999976613,
+                          "count": 7943,
+                          "is_parallel": true,
+                          "self": 0.7940281999968484,
+                          "children": [
+                            {
+                              "name": "_process_vector_observation",
+                              "total": 3.171079500000813,
+                              "count": 7943,
+                              "is_parallel": true,
+                              "self": 3.171079500000813
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "trainer_advance",
+          "total": 278.3144971000008,
+          "count": 5714,
+          "self": 0.4296911000012642,
+          "children": [
+            {
+              "name": "process_trajectory",
+              "total": 21.37090029999949,
+              "count": 5714,
+              "self": 21.37090029999949
+            },
+            {
+              "name": "_update_policy",
+              "total": 256.5139057,
+              "count": 5282,
+              "self": 0.05965230000072097,
+              "children": [
+                {
+                  "name": "SACTrainer._update_policy",
+                  "total": 256.4542533999993,
+                  "count": 5282,
+                  "self": 105.29049909999986,
+                  "children": [
+                    {
+                      "name": "SACPolicy.update",
+                      "total": 151.16375429999943,
+                      "count": 1107,
+                      "self": 151.16375429999943
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

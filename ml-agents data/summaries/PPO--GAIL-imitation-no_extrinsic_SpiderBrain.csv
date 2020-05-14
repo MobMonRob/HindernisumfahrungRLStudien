@@ -1,0 +1,2 @@
+Steps,Policy/Entropy,Policy/Learning Rate,Environment/Cumulative Reward,Environment/Episode Length,Policy/GAIL Value Estimate,Policy/GAIL Reward
+10000,1.4189383,0.0004995414,0.019136885406844543,60.79545454545455,3.9325464,0.0
