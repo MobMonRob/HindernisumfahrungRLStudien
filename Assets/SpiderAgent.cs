@@ -1,48 +1,55 @@
 ﻿using System.IO;
-using MLAgents;
+using Unity.MLAgents;
+using Unity.MLAgents.Actuators;
+using Unity.MLAgents.Sensors;
 
 public class SpiderAgent : Agent {
     public SpiderController spiderController;
 
-    public override void AgentReset() {
+    public override void OnEpisodeBegin() {
         spiderController.moveToStart();
     }
 
-    public override float[] Heuristic() {
+    public override void Heuristic(in ActionBuffers actionsOut) {
+        var continuousActionsOut = actionsOut.ContinuousActions;
         var vals = SpiderManualControler.getValues();
         for (int i = 0; i < 12; i++) {
-            vals[i] = normalize(vals[i]);
+            continuousActionsOut[i] = normalize(vals[i]);
         }
-
-        return vals;
     }
 
-    public override void CollectObservations() {
+    public override void CollectObservations(VectorSensor sensor) {
 
         var rot = spiderController.center.rotation;
         //var rotNormalized = rot.eulerAngles / 180.0f - Vector3.one;
         
         for (int i = 0; i < 12; i++) {
-            AddVectorObs(normalize(spiderController.allServos[i].currentAngle));
+            sensor.AddObservation(normalize(spiderController.allServos[i].currentAngle));
         }
     }
 
-    public override void AgentAction(float[] vectorAction) {
+    public override void OnActionReceived(ActionBuffers actionBuffers) {
 
         //float[] vectorAction = new float[12];
         //vectorActionInput.CopyTo(vectorAction, 0);
+
+        var continuousActionsOut = actionBuffers.ContinuousActions;
         
-        if (vectorAction.Length != 12) throw new InvalidDataException("invalid number of actions");
+        if (continuousActionsOut.Length != 12) throw new InvalidDataException("invalid number of actions");
         
-        for (int i = 0; i < vectorAction.Length - 1; i++) {
-            if (vectorAction[i] < 1 && vectorAction[i] > -1) {
-                vectorAction[i] = denormalize(vectorAction[i]);
+        for (int i = 0; i < continuousActionsOut.Length - 1; i++) {
+            if (continuousActionsOut[i] < 1 && continuousActionsOut[i] > -1) {
+                continuousActionsOut[i] = denormalize(continuousActionsOut[i]);
             }
         }
 
         for (int i = 0; i < 12; i++) {
-            spiderController.allServos[i].targetAngle = vectorAction[i];
+            spiderController.allServos[i].targetAngle = continuousActionsOut[i];
         }
+
+        // actionBuffers.ContinuousActions = continuousActionsOut;
+        // this does not work because actionBuffers.ContinuousActions is read only
+        // as it is read only, it also might not be needed at all because it is not intended by MLAgents
 
         //reward
         SetReward(spiderController.getReward());
@@ -50,7 +57,7 @@ public class SpiderAgent : Agent {
         //reset if invalid
         if (spiderController.isTurned()) {
             print("spider turned!");
-            Done();
+            EndEpisode();
         }
     }
 
