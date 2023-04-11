@@ -59,6 +59,7 @@ public class SpiderController : MonoBehaviour {
         if (isTurned()) {
             addReward = -0.1f;
         }
+        addReward += getAngle() * -0.01f;
 
         var change = getProgress() - lastProg;
         lastProg = getProgress();
@@ -70,6 +71,13 @@ public class SpiderController : MonoBehaviour {
         var up = center.forward;
         var angle = Vector3.Angle(up, Vector3.up);
         return angle > 90;
+        // return angle > 3;
+    }
+
+    public float getAngle() {
+        var up = center.forward;
+        var angle = Vector3.Angle(up, Vector3.up);
+        return angle % 90;
     }
 
     private void storeStart() {
