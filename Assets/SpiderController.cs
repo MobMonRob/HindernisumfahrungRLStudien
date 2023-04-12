@@ -55,16 +55,27 @@ public class SpiderController : MonoBehaviour {
     }
 
     public float getReward() {
-        var addReward = 0f;
+        // var addReward = 0f;
+        // if (isTurned()) {
+        //     addReward = -0.1f;
+        // }
+        // addReward += getAngle() * -0.01f;
+
+        // var change = getProgress() - lastProg;
+        // lastProg = getProgress();
+        // if (change < 0) change = 0;
+        // return change + addReward;
+        
         if (isTurned()) {
-            addReward = -0.1f;
+            return -10.0f;
         }
-        addReward += getAngle() * -0.01f;
+
+        var reward = -0.0025f;
+        reward += getAngle() * -0.0025f;
 
         var change = getProgress() - lastProg;
         lastProg = getProgress();
-        if (change < 0) change = 0;
-        return change + addReward;
+        return change + reward;
     }
 
     public bool isTurned() {
