@@ -52,7 +52,8 @@ public class SpiderAgent : Agent {
         // as it is read only, it also might not be needed at all because it is not intended by MLAgents
 
         //reward
-        SetReward(spiderController.getReward());
+        // SetReward(spiderController.getReward());
+        AddReward(spiderController.getReward());
         
         //reset if invalid
         if (spiderController.isTurned()) {
