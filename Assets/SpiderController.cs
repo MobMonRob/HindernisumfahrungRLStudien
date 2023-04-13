@@ -70,12 +70,12 @@ public class SpiderController : MonoBehaviour {
             return -10.0f;
         }
 
-        var reward = -0.0025f;
-        reward += getAngle() * -0.0025f;
+        var punishment = -0.0025f;
+        punishment += getAngle() * -0.0025f;
 
         var change = getProgress() - lastProg;
         lastProg = getProgress();
-        return change + reward;
+        return change + punishment;
     }
 
     public bool isTurned() {
