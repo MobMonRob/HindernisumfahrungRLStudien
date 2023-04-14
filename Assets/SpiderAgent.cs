@@ -1,10 +1,23 @@
-﻿using System.IO;
+﻿using UnityEngine;
+using System.IO;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 
 public class SpiderAgent : Agent {
     public SpiderController spiderController;
+
+    [Header("Target To Walk Towards")]
+    public Transform TargetPrefab;
+    private Transform m_Target;
+
+    public override void Initialize() {
+        SpawnTarget(TargetPrefab, transform.position);
+    }
+
+    private void SpawnTarget(Transform prefab, Vector3 pos) {
+        m_Target = Instantiate(prefab, pos, Quaternion.identity, transform.parent);
+    }
 
     public override void OnEpisodeBegin() {
         spiderController.moveToStart();
@@ -19,22 +32,26 @@ public class SpiderAgent : Agent {
     }
 
     public override void CollectObservations(VectorSensor sensor) {
-
-        var rot = spiderController.center.rotation;
-        //var rotNormalized = rot.eulerAngles / 180.0f - Vector3.one;
-        
+        // Servo angles
         for (int i = 0; i < 12; i++) {
             sensor.AddObservation(normalize(spiderController.allServos[i].currentAngle));
         }
+
+        // target position
+        var targetPosition = m_Target.transform.position;
+        targetPosition.y = 0;
+        sensor.AddObservation(targetPosition);
+
+        // robot position
+        var robotPosition = spiderController.getPosition();
+        robotPosition.y = 0;
+        sensor.AddObservation(robotPosition);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers) {
-
-        //float[] vectorAction = new float[12];
-        //vectorActionInput.CopyTo(vectorAction, 0);
-
         var continuousActionsOut = actionBuffers.ContinuousActions;
         
+        // can this even happen anymore? just user error should be possible
         if (continuousActionsOut.Length != 12) throw new InvalidDataException("invalid number of actions");
         
         for (int i = 0; i < continuousActionsOut.Length - 1; i++) {
@@ -46,20 +63,28 @@ public class SpiderAgent : Agent {
         for (int i = 0; i < 12; i++) {
             spiderController.allServos[i].targetAngle = continuousActionsOut[i];
         }
+    }
 
-        // actionBuffers.ContinuousActions = continuousActionsOut;
-        // this does not work because actionBuffers.ContinuousActions is read only
-        // as it is read only, it also might not be needed at all because it is not intended by MLAgents
-
-        //reward
-        // SetReward(spiderController.getReward());
-        AddReward(spiderController.getReward());
-        
+    void FixedUpdate() {
         //reset if invalid
         if (spiderController.isTurned()) {
+            AddReward(-100f);
             print("spider turned!");
             EndEpisode();
         }
+
+        // reward = (walked distance) * (walked distance leads to target) * (look at target)
+        // maybe later on add *(stability of body)
+
+        var walkedDistanceReward = spiderController.getProgress();
+        
+        var robotDirection = spiderController.getDirection();
+        var targetPosition = m_Target.position;
+        targetPosition.y = 0;
+        var targetDirection = targetPosition - spiderController.getPosition();
+        var angleReward = (180 - Vector3.Angle(robotDirection, targetDirection)) / 180;
+
+        AddReward(walkedDistanceReward * angleReward);
     }
 
     

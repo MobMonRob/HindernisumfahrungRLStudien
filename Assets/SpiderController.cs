@@ -29,9 +29,12 @@ public class SpiderController : MonoBehaviour {
     private float lastProg = 0f;
     private Quaternion[] startOrientation = new Quaternion[13];
 
+    private Vector3 lastPosition;
+
     private void Start() {
         storeStart();
         initialX = center.position.x;
+        lastPosition = center.position;
 
         allServos[0] = center_front_right;
         allServos[1] = center_front_left;
@@ -47,35 +50,21 @@ public class SpiderController : MonoBehaviour {
         allServos[11] = outer_back_left;
 
     }
+
+    public Vector3 getPosition() {
+        return wipeY(center.position);
+    }
+    
     public float getProgress() {
-        var prog = center.position.x - initialX;
-        prog *= -1;
-        
-        return prog;
+        return Vector3.Distance(wipeY(center.position), wipeY(lastPosition));
     }
 
-    public float getReward() {
-        // var addReward = 0f;
-        // if (isTurned()) {
-        //     addReward = -0.1f;
-        // }
-        // addReward += getAngle() * -0.01f;
-
-        // var change = getProgress() - lastProg;
-        // lastProg = getProgress();
-        // if (change < 0) change = 0;
-        // return change + addReward;
-        
-        if (isTurned()) {
-            return -10.0f;
-        }
-
-        var punishment = -0.0025f;
-        punishment += getAngle() * -0.0025f;
-
-        var change = getProgress() - lastProg;
-        lastProg = getProgress();
-        return change + punishment;
+    private Vector3 wipeY(Vector3 vec) {
+        vec.y = 0;
+        return vec;
+    }
+    public Vector3 getDirection() {
+        return wipeY(center.position) - wipeY(lastPosition);
     }
 
     public bool isTurned() {
