@@ -43,7 +43,7 @@ public class SpiderAgent : Agent {
         sensor.AddObservation(targetPosition);
 
         // robot position
-        var robotPosition = spiderController.getCenterPosition();
+        var robotPosition = spiderController.getCenterPosition(); // TODO: AVG Position?
         robotPosition.y = 0;
         sensor.AddObservation(robotPosition);
     }
@@ -79,19 +79,21 @@ public class SpiderAgent : Agent {
         // var walkedDistanceReward = spiderController.getCenterProgress();
         var avgSpeedReward = spiderController.getAvgSpeed().magnitude;
         
-        var robotDirection = spiderController.getAvgSpeed(); // can velocity be used or is calculation with last position necessary ?
+        var currentMovementDirection = spiderController.getAvgDirection(); // can velocity be used or is calculation with last position necessary ?
+        
         var targetPosition = m_Target.position;
         targetPosition.y = 0;
-        var targetDirection = targetPosition - spiderController.getAvgPosition();
-        var angledToTargetReward = (180 - Vector3.Angle(robotDirection, targetDirection)) / 180;
+        var robotPosition = spiderController.getAvgPosition();
+        robotPosition.y = 0;
+        
+        var targetMovementDirection = targetPosition - robotPosition;
+        var movementInTargetDirectionReward = (180 - Vector3.Angle(currentMovementDirection, targetMovementDirection)) / 180;
 
 
         var centerAngle = spiderController.getAngle();
         var calmCenterAngleReward = (90 - centerAngle) / 90;
 
-        var stagnationPenalty = -0.025f;
-
-        AddReward((avgSpeedReward * angledToTargetReward * calmCenterAngleReward) + stagnationPenalty);
+        AddReward((avgSpeedReward * movementInTargetDirectionReward * calmCenterAngleReward));
         spiderController.updatePositions();
     }
 

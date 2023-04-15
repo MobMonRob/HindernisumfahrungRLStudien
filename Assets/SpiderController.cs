@@ -81,6 +81,15 @@ public class SpiderController : MonoBehaviour {
         return Vector3.Distance(wipeY(center.position), wipeY(lastPosition));
     }
 
+    private float lastDistance = float.MaxValue;
+
+    public float getAvgProgressToTarget(Vector3 targetPosition) {
+        var distanceToTarget = Vector3.Distance(getAvgPosition(), targetPosition);
+        var progress = lastDistance - distanceToTarget;
+        lastDistance = distanceToTarget; // this is a problem, may only be called once per update !!!
+        return progress;
+    }
+
     private Vector3 wipeY(Vector3 vec) {
         vec.y = 0;
         return vec;
