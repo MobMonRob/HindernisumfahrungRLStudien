@@ -301,6 +301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: coxa_r (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 511571049393150259, guid: 044924765099b634db1e7a034f106919,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     - target: {fileID: 3549451066190146336, guid: 044924765099b634db1e7a034f106919,
         type: 3}
       propertyPath: m_RootOrder
@@ -670,6 +675,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: body_center
       objectReference: {fileID: 0}
+    - target: {fileID: 2469734435173737633, guid: ab83bc48c3155c941b1b3c0b427ec9e7,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     - target: {fileID: 8789223563616173868, guid: ab83bc48c3155c941b1b3c0b427ec9e7,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -1015,6 +1025,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2890595742719064358, guid: 6bd6b628759cc18488c7bef21b6d3b97,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd6b628759cc18488c7bef21b6d3b97, type: 3}
 --- !u!1 &237650936729728432 stripped
@@ -1199,6 +1214,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8340800001304311679, guid: 389f840f5d860bd478ba7edc4120db2c,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389f840f5d860bd478ba7edc4120db2c, type: 3}
 --- !u!114 &5209927195613732259 stripped
@@ -1368,6 +1388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340800001304311679, guid: 389f840f5d860bd478ba7edc4120db2c,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389f840f5d860bd478ba7edc4120db2c, type: 3}
@@ -1697,6 +1722,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: coxa_r (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 511571049393150259, guid: 044924765099b634db1e7a034f106919,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     - target: {fileID: 3549451066190146336, guid: 044924765099b634db1e7a034f106919,
         type: 3}
       propertyPath: m_RootOrder
@@ -1951,6 +1981,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890595742719064358, guid: 6bd6b628759cc18488c7bef21b6d3b97,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd6b628759cc18488c7bef21b6d3b97, type: 3}
@@ -2255,6 +2290,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2890595742719064358, guid: 6bd6b628759cc18488c7bef21b6d3b97,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd6b628759cc18488c7bef21b6d3b97, type: 3}
 --- !u!1 &5885630707496099749 stripped
@@ -2358,6 +2398,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: coxa_r (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 511571049393150259, guid: 044924765099b634db1e7a034f106919,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     - target: {fileID: 3549451066190146336, guid: 044924765099b634db1e7a034f106919,
         type: 3}
@@ -2613,6 +2658,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340800001304311679, guid: 389f840f5d860bd478ba7edc4120db2c,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389f840f5d860bd478ba7edc4120db2c, type: 3}
@@ -3022,6 +3072,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2890595742719064358, guid: 6bd6b628759cc18488c7bef21b6d3b97,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd6b628759cc18488c7bef21b6d3b97, type: 3}
 --- !u!1 &5885630706438553853 stripped
@@ -3205,6 +3260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340800001304311679, guid: 389f840f5d860bd478ba7edc4120db2c,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389f840f5d860bd478ba7edc4120db2c, type: 3}
@@ -3414,6 +3474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: coxa_r (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 511571049393150259, guid: 044924765099b634db1e7a034f106919,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     - target: {fileID: 3549451066190146336, guid: 044924765099b634db1e7a034f106919,
         type: 3}
