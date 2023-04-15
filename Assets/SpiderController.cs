@@ -30,6 +30,7 @@ public class SpiderController : MonoBehaviour {
     private Quaternion[] startOrientation = new Quaternion[13];
 
     private Vector3 lastPosition;
+    private Vector3[] lastPositions = new Vector3[13];
 
     private void Start() {
         storeStart();
@@ -51,11 +52,32 @@ public class SpiderController : MonoBehaviour {
 
     }
 
-    public Vector3 getPosition() {
+    public void updatePositions() {
+        lastPosition = center.position;
+        for (var i = 0; i < 12; i++) {
+            lastPositions[i] = allServos[i].transform.position;
+        }
+        lastPositions[12] = center.position;
+    }
+
+    public Vector3 getCenterPosition() {
         return wipeY(center.position);
     }
+
+    public Vector3 getAvgPosition() {
+        Vector3 sumPositions = Vector3.zero;
+        Vector3 avgPosition = Vector3.zero;
+
+        foreach (var servo in allServos) {
+            sumPositions += servo.transform.position;
+        }
+
+        sumPositions += center.transform.position;
+        avgPosition = sumPositions / 13;
+        return avgPosition;
+    }
     
-    public float getProgress() {
+    public float getCenterProgress() {
         return Vector3.Distance(wipeY(center.position), wipeY(lastPosition));
     }
 
@@ -63,15 +85,45 @@ public class SpiderController : MonoBehaviour {
         vec.y = 0;
         return vec;
     }
-    public Vector3 getDirection() {
+
+    public Vector3 getAvgDirection() {
+        Vector3 sumDirections = Vector3.zero;
+        Vector3 avgDirection = Vector3.zero;
+        for (var i = 0; i < allServos.Length; i++) {
+            sumDirections += allServos[i].transform.position - lastPositions[i];
+        }
+        sumDirections += center.transform.position - lastPositions[12];
+        avgDirection = sumDirections / 13;
+        return avgDirection;
+    }
+
+    public Vector3 getCenterDirection() {
         return wipeY(center.position) - wipeY(lastPosition);
+    }
+
+    public Vector3 getAvgSpeed() {
+        Vector3 velSum = Vector3.zero;
+        Vector3 avgVel = Vector3.zero;
+
+        int numOfRb = 0;
+        foreach (var servo in allServos) {
+            numOfRb++;
+            var rb = servo.transform.GetComponent<Rigidbody>();
+            velSum += rb.velocity;
+        }
+
+        numOfRb++;
+        var rbCenter = center.transform.GetComponent<Rigidbody>();
+        velSum += rbCenter.velocity;
+
+        avgVel = velSum / numOfRb;
+        return avgVel;
     }
 
     public bool isTurned() {
         var up = center.forward;
         var angle = Vector3.Angle(up, Vector3.up);
         return angle > 90;
-        // return angle > 3;
     }
 
     public float getAngle() {
@@ -94,6 +146,10 @@ public class SpiderController : MonoBehaviour {
         startPositions[10] = outer_back_left.transform.position;
         startPositions[11] = outer_back_right.transform.position;
         startPositions[12] = center.transform.position;
+
+        for(var i = 0; i < lastPositions.Length; i++) {
+            lastPositions[i] = startPositions[i];
+        }
         
         startOrientation[0] = center_front_left.transform.rotation;
         startOrientation[1] = center_front_right.transform.rotation;
@@ -125,6 +181,10 @@ public class SpiderController : MonoBehaviour {
         outer_back_left.transform.position = startPositions[10];
         outer_back_right.transform.position = startPositions[11];
         center.transform.position = startPositions[12];
+
+        for(var i = 0; i < lastPositions.Length; i++) {
+            lastPositions[i] = startPositions[i];
+        }
         
         center_front_left.transform.rotation = startOrientation[0];
         center_front_right.transform.rotation = startOrientation[1];
