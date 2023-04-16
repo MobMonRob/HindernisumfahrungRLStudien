@@ -17,7 +17,7 @@ public class ProgressTracker : MonoBehaviour {
      // Update is called once per frame
      void Update() {
 
-         text.text = controller.getCenterProgress().ToString(CultureInfo.CurrentCulture);
+        //  text.text = controller.getProgressProgress().ToString(CultureInfo.CurrentCulture);
 
      }
  }

@@ -25,17 +25,12 @@ public class SpiderController : MonoBehaviour {
     public Transform center;
     
     private Vector3[] startPositions = new Vector3[13];
-    private float initialX;
-    private float lastProg = 0f;
+    private Vector3 lastCenterPosition = Vector3.zero;
     private Quaternion[] startOrientation = new Quaternion[13];
-
-    private Vector3 lastPosition;
-    private Vector3[] lastPositions = new Vector3[13];
 
     private void Start() {
         storeStart();
-        initialX = center.position.x;
-        lastPosition = center.position;
+        lastCenterPosition = center.position;
 
         allServos[0] = center_front_right;
         allServos[1] = center_front_left;
@@ -51,85 +46,39 @@ public class SpiderController : MonoBehaviour {
         allServos[11] = outer_back_left;
 
     }
-
-    public void updatePositions() {
-        lastPosition = center.position;
-        for (var i = 0; i < 12; i++) {
-            lastPositions[i] = allServos[i].transform.position;
-        }
-        lastPositions[12] = center.position;
-    }
-
-    public Vector3 getCenterPosition() {
-        return wipeY(center.position);
-    }
-
-    public Vector3 getAvgPosition() {
-        Vector3 sumPositions = Vector3.zero;
-        Vector3 avgPosition = Vector3.zero;
-
-        foreach (var servo in allServos) {
-            sumPositions += servo.transform.position;
-        }
-
-        sumPositions += center.transform.position;
-        avgPosition = sumPositions / 13;
-        return avgPosition;
-    }
-    
-    public float getCenterProgress() {
-        return Vector3.Distance(wipeY(center.position), wipeY(lastPosition));
-    }
-
-    private float lastDistance = float.MaxValue;
-
-    public float getAvgProgressToTarget(Vector3 targetPosition) {
-        var distanceToTarget = Vector3.Distance(getAvgPosition(), targetPosition);
-        var progress = lastDistance - distanceToTarget;
-        lastDistance = distanceToTarget; // this is a problem, may only be called once per update !!!
+    public float getProgress(Vector3 targetPosition) {
+        var previousDistanceToTarget = Vector3.Distance(lastCenterPosition, targetPosition);
+        var currentDistanceToTarget = Vector3.Distance(getCenterPosition(), targetPosition);
+        
+        var progress = previousDistanceToTarget - currentDistanceToTarget;
+        
         return progress;
     }
 
-    private Vector3 wipeY(Vector3 vec) {
+    public Vector3 getCenterPosition() {
+        return center.position;
+    }
+
+    // TODO: if current progress measurement does not work, try clearing Y Position first to even out position
+    public Vector3 clearY(Vector3 vec) {
         vec.y = 0;
         return vec;
     }
 
-    public Vector3 getAvgDirection() {
-        Vector3 sumDirections = Vector3.zero;
-        Vector3 avgDirection = Vector3.zero;
-        for (var i = 0; i < allServos.Length; i++) {
-            sumDirections += allServos[i].transform.position - lastPositions[i];
-        }
-        sumDirections += center.transform.position - lastPositions[12];
-        avgDirection = sumDirections / 13;
-        return avgDirection;
-    }
-
-    public Vector3 getCenterDirection() {
-        return wipeY(center.position) - wipeY(lastPosition);
-    }
-
-    public Vector3 getAvgSpeed() {
-        Vector3 velSum = Vector3.zero;
-        Vector3 avgVel = Vector3.zero;
-
-        int numOfRb = 0;
-        foreach (var servo in allServos) {
-            numOfRb++;
-            var rb = servo.transform.GetComponent<Rigidbody>();
-            velSum += rb.velocity;
+    public float getReward(Vector3 targetPosition) {
+        if (isFlipped()) {
+            return -10.0f; // flipping the robot upside down is really bad
         }
 
-        numOfRb++;
-        var rbCenter = center.transform.GetComponent<Rigidbody>();
-        velSum += rbCenter.velocity;
+        var punishment = -0.0025f; // stagnation punishment
+        punishment += getAngle() * -0.0025f; // keep body center as straight as possible
 
-        avgVel = velSum / numOfRb;
-        return avgVel;
+        var progress = getProgress(targetPosition); // the distance, the robot moved closer to the target
+        lastCenterPosition = getCenterPosition(); // update last position for correct progress calculation next update
+        return progress + punishment;
     }
 
-    public bool isTurned() {
+    public bool isFlipped() {
         var up = center.forward;
         var angle = Vector3.Angle(up, Vector3.up);
         return angle > 90;
@@ -155,10 +104,6 @@ public class SpiderController : MonoBehaviour {
         startPositions[10] = outer_back_left.transform.position;
         startPositions[11] = outer_back_right.transform.position;
         startPositions[12] = center.transform.position;
-
-        for(var i = 0; i < lastPositions.Length; i++) {
-            lastPositions[i] = startPositions[i];
-        }
         
         startOrientation[0] = center_front_left.transform.rotation;
         startOrientation[1] = center_front_right.transform.rotation;
@@ -190,10 +135,6 @@ public class SpiderController : MonoBehaviour {
         outer_back_left.transform.position = startPositions[10];
         outer_back_right.transform.position = startPositions[11];
         center.transform.position = startPositions[12];
-
-        for(var i = 0; i < lastPositions.Length; i++) {
-            lastPositions[i] = startPositions[i];
-        }
         
         center_front_left.transform.rotation = startOrientation[0];
         center_front_right.transform.rotation = startOrientation[1];
@@ -222,7 +163,6 @@ public class SpiderController : MonoBehaviour {
         outer_back_left.reset();
         outer_back_right.reset();
         
-        initialX = center.position.x;
-        lastProg = 0;
+        lastCenterPosition = center.position;
     }
 }

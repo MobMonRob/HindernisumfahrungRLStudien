@@ -63,40 +63,14 @@ public class SpiderAgent : Agent {
         for (int i = 0; i < 12; i++) {
             spiderController.allServos[i].targetAngle = continuousActionsOut[i];
         }
-    }
 
-    void FixedUpdate() {
-        //reset if invalid
-        if (spiderController.isTurned()) {
-            AddReward(-100f);
+        AddReward(spiderController.getReward(m_Target.position));
+
+        if (spiderController.isFlipped()) {
             print("spider turned!");
             EndEpisode();
         }
-
-        // reward = (walked distance) * (walked distance leads to target) * (look at target)
-        // maybe later on add *(stability of body)
-
-        // var walkedDistanceReward = spiderController.getCenterProgress();
-        var avgSpeedReward = spiderController.getAvgSpeed().magnitude;
-        
-        var currentMovementDirection = spiderController.getAvgDirection(); // can velocity be used or is calculation with last position necessary ?
-        
-        var targetPosition = m_Target.position;
-        targetPosition.y = 0;
-        var robotPosition = spiderController.getAvgPosition();
-        robotPosition.y = 0;
-        
-        var targetMovementDirection = targetPosition - robotPosition;
-        var movementInTargetDirectionReward = (180 - Vector3.Angle(currentMovementDirection, targetMovementDirection)) / 180;
-
-
-        var centerAngle = spiderController.getAngle();
-        var calmCenterAngleReward = (90 - centerAngle) / 90;
-
-        AddReward((avgSpeedReward * movementInTargetDirectionReward * calmCenterAngleReward));
-        spiderController.updatePositions();
     }
-
     
     //convert angles from degrees to normalized value in range [-1, 1]
     private float denormalize(float val) {
