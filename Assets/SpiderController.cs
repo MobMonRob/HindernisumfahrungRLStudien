@@ -67,11 +67,11 @@ public class SpiderController : MonoBehaviour {
 
     public float getReward(Vector3 targetPosition) {
         if (isFlipped()) {
-            return -10.0f; // flipping the robot upside down is really bad
+            return -100.0f; // flipping the robot upside down is really bad
         }
 
         var punishment = -0.0025f; // stagnation punishment
-        punishment += getAngle() * -0.0025f; // keep body center as straight as possible
+        punishment += getAngle() * -0.025f; // keep body center as straight as possible
 
         var progress = getProgress(targetPosition); // the distance, the robot moved closer to the target
         lastCenterPosition = getCenterPosition(); // update last position for correct progress calculation next update

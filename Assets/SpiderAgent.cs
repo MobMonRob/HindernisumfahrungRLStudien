@@ -21,6 +21,8 @@ public class SpiderAgent : Agent {
 
     public override void OnEpisodeBegin() {
         spiderController.moveToStart();
+        Destroy(m_Target.gameObject);
+        SpawnTarget(TargetPrefab, transform.position);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut) {
