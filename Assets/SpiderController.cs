@@ -74,6 +74,7 @@ public class SpiderController : MonoBehaviour {
         punishment += getAngle() * -0.025f; // keep body center as straight as possible
 
         var progress = getProgress(targetPosition); // the distance, the robot moved closer to the target
+        progress *= 10; // assign a higher weight to success
         lastCenterPosition = getCenterPosition(); // update last position for correct progress calculation next update
         return progress + punishment;
     }
