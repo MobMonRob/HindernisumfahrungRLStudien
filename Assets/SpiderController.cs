@@ -86,7 +86,7 @@ public class SpiderController : MonoBehaviour {
     }
 
     public float getAngle() {
-        var up = center.forward;
+        var up = center.forward; // this could probably be improved to cover all axis
         var angle = Vector3.Angle(up, Vector3.up);
         return angle % 90;
     }
