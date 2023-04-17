@@ -26,6 +26,9 @@ public class SpiderAgent : Agent {
         for (int i = 0; i < 12; i++) {
             sensor.AddObservation(normalize(spiderController.allServos[i].currentAngle));
         }
+
+        sensor.AddObservation(UnityEngine.Vector3.zero);
+        sensor.AddObservation(UnityEngine.Vector3.zero);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers) {
