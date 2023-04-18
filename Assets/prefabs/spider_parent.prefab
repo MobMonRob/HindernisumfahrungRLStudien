@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 987210062630640769}
   m_Layer: 0
   m_Name: spider_parent
-  m_TagString: Untagged
+  m_TagString: agent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +119,8 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 2500
   spiderController: {fileID: 987210062630640783}
+  TargetPrefab: {fileID: 3839136118347789758, guid: d1cfce195d0bc8d128cb91cafd11179d,
+    type: 3}
 --- !u!114 &987210062630640770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,6 +300,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: coxa_r (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 511571049393150259, guid: 044924765099b634db1e7a034f106919,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     - target: {fileID: 3549451066190146336, guid: 044924765099b634db1e7a034f106919,
         type: 3}
@@ -668,6 +675,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: body_center
       objectReference: {fileID: 0}
+    - target: {fileID: 2469734435173737633, guid: ab83bc48c3155c941b1b3c0b427ec9e7,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     - target: {fileID: 8789223563616173868, guid: ab83bc48c3155c941b1b3c0b427ec9e7,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -884,10 +896,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: servo_t90_main_outer_front_right
       objectReference: {fileID: 0}
+    - target: {fileID: 4248566348324555171, guid: 1cba3fb8112348247bae5f36931d24d8,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     - target: {fileID: 8453388918141366649, guid: 1cba3fb8112348247bae5f36931d24d8,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8453388918141366649, guid: 1cba3fb8112348247bae5f36931d24d8,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     - target: {fileID: 8789223565230257995, guid: 1cba3fb8112348247bae5f36931d24d8,
         type: 3}
@@ -1012,6 +1034,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890595742719064358, guid: 6bd6b628759cc18488c7bef21b6d3b97,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd6b628759cc18488c7bef21b6d3b97, type: 3}
@@ -1197,6 +1224,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8340800001304311679, guid: 389f840f5d860bd478ba7edc4120db2c,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389f840f5d860bd478ba7edc4120db2c, type: 3}
 --- !u!114 &5209927195613732259 stripped
@@ -1366,6 +1398,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340800001304311679, guid: 389f840f5d860bd478ba7edc4120db2c,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389f840f5d860bd478ba7edc4120db2c, type: 3}
@@ -1695,6 +1732,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: coxa_r (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 511571049393150259, guid: 044924765099b634db1e7a034f106919,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     - target: {fileID: 3549451066190146336, guid: 044924765099b634db1e7a034f106919,
         type: 3}
       propertyPath: m_RootOrder
@@ -1949,6 +1991,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890595742719064358, guid: 6bd6b628759cc18488c7bef21b6d3b97,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd6b628759cc18488c7bef21b6d3b97, type: 3}
@@ -2253,6 +2300,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2890595742719064358, guid: 6bd6b628759cc18488c7bef21b6d3b97,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd6b628759cc18488c7bef21b6d3b97, type: 3}
 --- !u!1 &5885630707496099749 stripped
@@ -2356,6 +2408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: coxa_r (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 511571049393150259, guid: 044924765099b634db1e7a034f106919,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     - target: {fileID: 3549451066190146336, guid: 044924765099b634db1e7a034f106919,
         type: 3}
@@ -2611,6 +2668,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340800001304311679, guid: 389f840f5d860bd478ba7edc4120db2c,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389f840f5d860bd478ba7edc4120db2c, type: 3}
@@ -3020,6 +3082,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2890595742719064358, guid: 6bd6b628759cc18488c7bef21b6d3b97,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd6b628759cc18488c7bef21b6d3b97, type: 3}
 --- !u!1 &5885630706438553853 stripped
@@ -3203,6 +3270,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340800001304311679, guid: 389f840f5d860bd478ba7edc4120db2c,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389f840f5d860bd478ba7edc4120db2c, type: 3}
@@ -3412,6 +3484,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: coxa_r (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 511571049393150259, guid: 044924765099b634db1e7a034f106919,
+        type: 3}
+      propertyPath: m_TagString
+      value: agent
       objectReference: {fileID: 0}
     - target: {fileID: 3549451066190146336, guid: 044924765099b634db1e7a034f106919,
         type: 3}

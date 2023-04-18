@@ -2,12 +2,27 @@
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
+using UnityEngine;
 
 public class SpiderAgent : Agent {
     public SpiderController spiderController;
 
+    [Header("Target To Walk Towards")]
+    public Transform TargetPrefab;
+    private Transform m_Target;
+
+    public override void Initialize() {
+        SpawnTarget(TargetPrefab, transform.position);
+    }
+
+    private void SpawnTarget(Transform prefab, Vector3 pos) {
+        m_Target = Instantiate(prefab, pos, Quaternion.identity, transform.parent);
+    }
+
     public override void OnEpisodeBegin() {
         spiderController.moveToStart();
+        Destroy(m_Target.gameObject);
+        SpawnTarget(TargetPrefab, transform.position);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut) {
@@ -27,8 +42,13 @@ public class SpiderAgent : Agent {
             sensor.AddObservation(normalize(spiderController.allServos[i].currentAngle));
         }
 
-        sensor.AddObservation(UnityEngine.Vector3.zero);
-        sensor.AddObservation(UnityEngine.Vector3.zero);
+        var robotPosition = spiderController.getCenterPosition();
+        robotPosition.y = 0;
+        sensor.AddObservation(robotPosition);
+
+        var targetPosition = m_Target.transform.position;
+        targetPosition.y = 0;
+        sensor.AddObservation(targetPosition);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers) {

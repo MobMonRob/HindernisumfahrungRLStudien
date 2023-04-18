@@ -54,6 +54,10 @@ public class SpiderController : MonoBehaviour {
         return prog;
     }
 
+    public Vector3 getCenterPosition() {
+        return center.position;
+    }
+
     public float getReward() {
         // var addReward = 0f;
         // if (isTurned()) {
