@@ -25,13 +25,12 @@ public class SpiderController : MonoBehaviour {
     public Transform center;
     
     private Vector3[] startPositions = new Vector3[13];
-    private float initialX;
-    private float lastProg = 0f;
+    private Vector3 lastCenterPosition = Vector3.zero;
     private Quaternion[] startOrientation = new Quaternion[13];
 
     private void Start() {
         storeStart();
-        initialX = center.position.x;
+        lastCenterPosition = center.position;
 
         allServos[0] = center_front_right;
         allServos[1] = center_front_left;
@@ -47,42 +46,37 @@ public class SpiderController : MonoBehaviour {
         allServos[11] = outer_back_left;
 
     }
-    public float getProgress() {
-        var prog = center.position.x - initialX;
-        prog *= -1;
+    public float getProgress(Vector3 targetPosition) {
+        var previousDistanceToTarget = Vector3.Distance(clearY(lastCenterPosition), clearY(targetPosition));
+        var currentDistanceToTarget = Vector3.Distance(clearY(getCenterPosition()), clearY(targetPosition));
+        var progress = previousDistanceToTarget - currentDistanceToTarget;
         
-        return prog;
+        return progress;
     }
 
     public Vector3 getCenterPosition() {
         return center.position;
     }
 
-    public float getReward() {
-        // var addReward = 0f;
-        // if (isTurned()) {
-        //     addReward = -0.1f;
-        // }
-        // addReward += getAngle() * -0.01f;
+    public Vector3 clearY(Vector3 vec) {
+        vec.y = 0;
+        return vec;
+    }
 
-        // var change = getProgress() - lastProg;
-        // lastProg = getProgress();
-        // if (change < 0) change = 0;
-        // return change + addReward;
-        
-        if (isTurned()) {
+    public float getReward(Vector3 targetPosition) {
+        if (isFlipped()) {
             return -10.0f;
         }
 
-        var reward = -0.0025f;
-        reward += getAngle() * -0.0025f;
+        var punishment = -0.0025f;
+        punishment += getAngle() * -0.0025f;
 
-        var change = getProgress() - lastProg;
-        lastProg = getProgress();
-        return change + reward;
+        var progress = getProgress(targetPosition);
+        lastCenterPosition = getCenterPosition();
+        return progress + punishment;
     }
 
-    public bool isTurned() {
+    public bool isFlipped() {
         var up = center.forward;
         var angle = Vector3.Angle(up, Vector3.up);
         return angle > 90;
@@ -168,7 +162,6 @@ public class SpiderController : MonoBehaviour {
         outer_back_left.reset();
         outer_back_right.reset();
         
-        initialX = center.position.x;
-        lastProg = 0;
+        lastCenterPosition = center.position;
     }
 }

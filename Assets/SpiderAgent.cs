@@ -76,10 +76,10 @@ public class SpiderAgent : Agent {
 
         //reward
         // SetReward(spiderController.getReward());
-        AddReward(spiderController.getReward());
+        AddReward(spiderController.getReward(m_Target.transform.position));
         
         //reset if invalid
-        if (spiderController.isTurned()) {
+        if (spiderController.isFlipped()) {
             print("spider turned!");
             EndEpisode();
         }
