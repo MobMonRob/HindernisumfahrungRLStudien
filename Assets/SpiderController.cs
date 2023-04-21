@@ -68,7 +68,7 @@ public class SpiderController : MonoBehaviour {
             return -10.0f;
         }
 
-        var punishment = -0.0025f;
+        var punishment = -0.025f;
         punishment += getAngle() * -0.0025f;
 
         var progress = getProgress(targetPosition);
