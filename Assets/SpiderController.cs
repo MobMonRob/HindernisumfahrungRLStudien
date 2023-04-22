@@ -65,22 +65,31 @@ public class SpiderController : MonoBehaviour {
 
     public float getReward(Vector3 targetPosition) {
         if (isFlipped()) {
-            return -10.0f;
+            return -1.0f;
         }
 
-        var punishment = -0.025f;
-        punishment += getAngle() * -0.0025f;
+        var pos = center.position;
+        var forw = -center.transform.parent.right;
+
+        var centerAngleReward = (90 - getAngle()) / 90;
+
+        var targetAngleReward = (180 - Vector3.Angle(-center.transform.parent.right, getTargetDirection(targetPosition))) / 180;
 
         var progress = getProgress(targetPosition);
         lastCenterPosition = getCenterPosition();
-        return progress + punishment;
+        var progressReward = Mathf.Clamp(progress * 50, -1f, 1f); // factor progress to make it noticable
+
+        return centerAngleReward * targetAngleReward * progressReward;
+    }
+
+    public Vector3 getTargetDirection(Vector3 targetPosition) {
+        return targetPosition - center.position;
     }
 
     public bool isFlipped() {
         var up = center.forward;
         var angle = Vector3.Angle(up, Vector3.up);
         return angle > 90;
-        // return angle > 3;
     }
 
     public float getAngle() {

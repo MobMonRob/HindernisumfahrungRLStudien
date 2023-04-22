@@ -7502,6 +7502,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 898685018725101858, guid: d811d107d3221094a9b80cbf6c3d0660,
         type: 3}
+      propertyPath: MaxStep
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 898685018725101858, guid: d811d107d3221094a9b80cbf6c3d0660,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -7509,12 +7514,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: e455276fdd8eda13ab7805fcdbfee190,
+      objectReference: {fileID: 5022602860645237092, guid: 62b983e5ec5d3ffafa414eab31681f1d,
         type: 3}
+    - target: {fileID: 898685018725101859, guid: d811d107d3221094a9b80cbf6c3d0660,
+        type: 3}
+      propertyPath: m_BehaviorType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 898685018725101868, guid: d811d107d3221094a9b80cbf6c3d0660,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 898685018725101871, guid: d811d107d3221094a9b80cbf6c3d0660,
         type: 3}

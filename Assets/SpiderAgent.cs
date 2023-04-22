@@ -21,6 +21,7 @@ public class SpiderAgent : Agent {
 
     public override void OnEpisodeBegin() {
         spiderController.moveToStart();
+        transform.rotation = Quaternion.Euler(0, Random.Range(0.0f, 360.0f), 0);
         Destroy(m_Target.gameObject);
         SpawnTarget(TargetPrefab, transform.position);
     }
@@ -76,7 +77,7 @@ public class SpiderAgent : Agent {
 
         //reward
         // SetReward(spiderController.getReward());
-        AddReward(spiderController.getReward(m_Target.transform.position));
+        SetReward(spiderController.getReward(m_Target.transform.position));
         
         //reset if invalid
         if (spiderController.isFlipped()) {

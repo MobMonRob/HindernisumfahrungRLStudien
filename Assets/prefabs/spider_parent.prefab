@@ -117,7 +117,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 2500
+  MaxStep: 5000
   spiderController: {fileID: 987210062630640783}
   TargetPrefab: {fileID: 3839136118347789758, guid: d1cfce195d0bc8d128cb91cafd11179d,
     type: 3}
