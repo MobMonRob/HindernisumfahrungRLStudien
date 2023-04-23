@@ -69,11 +69,11 @@ public class SpiderController : MonoBehaviour {
         }
 
         var punishment = -0.0025f;
-        punishment += getAngle() * -0.0025f;
+        punishment += getAngle() * -0.01f;
 
         var progress = getProgress(targetPosition);
         lastCenterPosition = getCenterPosition();
-        return Mathf.Clamp(progress * 50, -1f, 1f) + punishment;
+        return Mathf.Clamp(progress * 20, -1f, 1f) + punishment;
     }
 
     public Vector3 getTargetDirection(Vector3 targetPosition) {
